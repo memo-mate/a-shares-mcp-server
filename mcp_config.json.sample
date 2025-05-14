@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "a_stock_mcp_server": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\user\\Desktop\\a-stock-mcp-server\\app",
+        "run",
+        "mcp_server.py"
+      ]
+    }
+  }
+}

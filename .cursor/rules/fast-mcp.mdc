@@ -1,0 +1,105 @@
+---
+description: FastMCP 是一个用于开发 Model Context Protocol 服务器的 Python 框架。此规则包含开发指南，涵盖工具开发、资源管理、提示工程和上下文管理的最佳实践。遵循这些规则可确保代码模块化、类型安全且高性能。适用于处理 MCP 相关功能的场景。
+globs: 
+alwaysApply: false
+---
+You are an expert in Python, FastMCP, and Model Context Protocol (MCP) server development.
+
+Advanced Principles
+- Design modular, maintainable MCP servers following FastMCP's Pythonic philosophy
+- Leverage decorators and type annotations to create self-documenting, validated tools
+- Implement clear separation between tools (execution), resources (context), and prompts (templates)
+- Use asynchronous programming patterns for high-performance concurrent request handling
+- Structure your project with logical organization of related components
+
+Project Structure
+complex_mcp_project/  
+├── src/  
+│   ├── __init__.py  
+│   ├── main.py           # Main entry point, creates and configures a FastMCP instance  
+│   ├── tools/            # Tool function module  
+│   │   ├── __init__.py  
+│   │   ├── 1_tools.py  
+│   │   └── 2_tools.py  
+│   ├── resources/        # Resource function module  
+│   │   ├── __init__.py  
+│   │   ├── config.py  
+│   │   └── user_data.py  
+│   ├── prompts/          # Prompt Template Module  
+│   │   ├── __init__.py  
+│   │   └── templates.py  
+│   └── models/           # Pydantic Model  
+│       ├── __init__.py  
+│       └── user.py  
+├── tests/                # Test Directory  
+├── requirements.txt  
+├── pyproject.toml  
+└── README.md  
+
+Tool Development
+- Create tools using the `@mcp.tool()` decorator to expose Python functions to LLMs
+- Tools naming should start with verbs such as get_, search_
+- Use complete type annotations for parameters to ensure proper validation and schema generation
+- Leverage Pydantic models for complex, structured input parameters
+- Implement appropriate error handling with clear error messages
+- Use parameter metadata with `Field` and `Annotated` to provide constraints and descriptions
+- Consider async tools for I/O-bound operations to improve server performance
+
+Resource Management
+- Use resources to provide data to LLM context through the `@mcp.resource()` decorator
+- Implement resource dependencies to build complex data hierarchies
+- Create resource collections for organizing related resources
+- Use resource parameters to make your resources dynamic and customizable
+- Leverage built-in resource types (Text, JSON, etc.) or create custom resources
+- Implement proper caching strategies for resource efficiency
+
+Prompt Engineering
+- Define reusable prompt templates with the `@mcp.prompt()` decorator
+- Use prompt parameters to create dynamic, adaptable prompts
+- Implement prompt dependencies to compose complex prompt structures
+- Organize prompts in collections for better maintainability
+- Take advantage of FastMCP's prompt inheritance and extension capabilities
+- Use context variables to inject dynamic data into prompts
+
+Context Management
+- Manage LLM context with the context manager to control information flow
+- Use annotations and metadata to control how context is provided to the LLM
+- Implement context persistence for maintaining state between interactions
+- Create context adapters for formatting content appropriately
+- Control content order and priority in the LLM's context
+- Balance context length against token limits for optimal performance
+
+Advanced Server Patterns
+- Implement server proxying to integrate with other MCP servers
+- Use server composition to build complex functionality from simpler components
+- Create proxy tools that delegate to other servers transparently
+- Implement authentication for secure server access
+- Use FastMCP's OpenAPI/FastAPI integration for enhanced functionality
+- Develop custom tool and resource decorators for specialized behavior
+
+Performance and Reliability
+- Optimize resource loading with appropriate caching strategies
+- Implement tool timeouts and retry logic for reliable operation
+- Use proper error handling and validation to prevent unexpected failures
+- Monitor server performance with appropriate logging and metrics
+- Scale horizontally using FastMCP's distributed capabilities
+- Implement rate limiting and load balancing for high-traffic scenarios
+
+Code Quality and Best Practices
+- Use type annotations consistently throughout your codebase
+- Follow FastMCP's naming conventions for clarity and consistency
+- Write comprehensive docstrings for all components
+- Implement proper testing for tools, resources, and prompts
+- Maintain backward compatibility when updating server interfaces
+- Structure your project logically with related components grouped together
+
+Key Conventions
+1. Always use proper type annotations for tool parameters and return values
+2. Provide clear, descriptive docstrings for all tools, resources, and prompts
+3. Use async functions for I/O-bound operations to improve concurrency
+4. Implement proper error handling and validation for robust operation
+5. Organize related functionality into logical groups for better maintainability
+6. Follow the principle of least surprise in your API design
+
+
+Reference the FastMCP documentation for detailed implementation guidance and advanced patterns: https://gofastmcp.com/getting-started/welcome.
