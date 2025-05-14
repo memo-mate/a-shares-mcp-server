@@ -11,16 +11,6 @@ A-Stock MCP Server 是一个基于 FastMCP 框架开发的 Model Context Protoco
 - 分析主力资金净流入、交易量占比、价格波动与主力资金占比等核心指标
 - 提供不同场景下的资金流向解读和分析建议
 
-### 股票实时行情
-- 支持查询沪深京所有 A 股的实时行情数据
-- 提供按市场分类（上海、深圳、北京、科创板、创业板等）的行情查询
-- 支持单只股票的详细行情查询和市场整体概览
-
-### 历史行情数据
-- 提供日线、周线、月线级别的历史行情数据查询
-- 支持分钟级（1、5、15、30、60分钟）历史行情数据
-- 提供多只股票历史行情的对比分析
-
 ## 技术架构
 
 - **后端框架**：基于 FastMCP 2.3.3+ 开发的 MCP 服务器
@@ -29,6 +19,7 @@ A-Stock MCP Server 是一个基于 FastMCP 框架开发的 Model Context Protoco
 - **Python 版本**：要求 Python 3.12 或更高版本
 
 ## 项目结构
+```
 a-stock-mcp-server/
 ├── app/ # 应用程序主目录
 │ ├── prompts/ # 提示模板
@@ -40,6 +31,7 @@ a-stock-mcp-server/
 ├── mcp_config.json.sample # MCP配置示例文件
 ├── pyproject.toml # 项目配置文件
 └── README.md # 项目说明文档
+```
 
 ## 安装与配置
 
